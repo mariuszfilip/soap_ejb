@@ -1,0 +1,155 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/test/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PartnerzyService" targetNamespace="http://localhost/test/wsdl">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://localhost/test/wsdl" elementFormDefault="unqualified" targetNamespace="http://localhost/test/wsdl" version="1.0">
+
+  <xs:element name="getBonus" type="tns:getBonus"></xs:element>
+
+  <xs:element name="getBonusResponse" type="tns:getBonusResponse"></xs:element>
+
+  <xs:element name="getStatus" type="tns:getStatus"></xs:element>
+
+  <xs:element name="getStatusResponse" type="tns:getStatusResponse"></xs:element>
+
+  <xs:element name="save" type="tns:save"></xs:element>
+
+  <xs:element name="saveResponse" type="tns:saveResponse"></xs:element>
+
+  <xs:complexType name="save">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:lead"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="lead">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ammount" type="xs:double"></xs:element>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"></xs:element>
+      <xs:element name="id" type="xs:int"></xs:element>
+      <xs:element name="idstatusu" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="pesel" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBonus">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBonusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:bonusInfo"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bonusInfo">
+    <xs:sequence>
+      <xs:element name="bonus" type="xs:double"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getStatus">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:leadStatus"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="leadStatus">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getStatus">
+    <wsdl:part element="tns:getStatus" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatusResponse">
+    <wsdl:part element="tns:getStatusResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="save">
+    <wsdl:part element="tns:save" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBonusResponse">
+    <wsdl:part element="tns:getBonusResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveResponse">
+    <wsdl:part element="tns:saveResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBonus">
+    <wsdl:part element="tns:getBonus" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LeadService">
+    <wsdl:operation name="save">
+      <wsdl:input message="tns:save" name="save">
+    </wsdl:input>
+      <wsdl:output message="tns:saveResponse" name="saveResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBonus">
+      <wsdl:input message="tns:getBonus" name="getBonus">
+    </wsdl:input>
+      <wsdl:output message="tns:getBonusResponse" name="getBonusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <wsdl:input message="tns:getStatus" name="getStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:getStatusResponse" name="getStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PartnerzyServiceSoapBinding" type="tns:LeadService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getBonus">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getBonus">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getBonusResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="save">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="save">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="saveResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getStatus">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getStatusResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PartnerzyService">
+    <wsdl:port binding="tns:PartnerzyServiceSoapBinding" name="PartnerzyPort">
+      <soap:address location="http://localhost:8080/leads/PartnerzyService/BusinessPartnersService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
